@@ -2,11 +2,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;;
 
 module.exports = {
     entry: './src/index.js',
     mode: 'development',
     watch: true,
+    devtool: 'source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'assets/js/[name].[contenthash].js',
@@ -60,6 +62,7 @@ module.exports = {
             filename: 'assets/style/[name].[contenthash].css'
         }),
         new Dotenv(),
+        new BundleAnalyzerPlugin()
     ],
     devServer: {
         static: 
