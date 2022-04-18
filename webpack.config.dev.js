@@ -8,7 +8,7 @@ module.exports = {
     mode: 'development',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[contenthash].js',
+        filename: 'assets/js/[name].[contenthash].js',
         assetModuleFilename: 'assets/images/[hash][ext]'
     },
     resolve: {
@@ -56,7 +56,7 @@ module.exports = {
             filename: './index.html'
         }),
         new MiniCssExtractPlugin({
-            filename: 'assets/[name].[contenthash].css'
+            filename: 'assets/style/[name].[contenthash].css'
         }),
         new Dotenv(),
     ],

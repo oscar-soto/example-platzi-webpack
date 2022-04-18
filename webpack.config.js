@@ -5,14 +5,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinizerPlugin = require('css-minimizer-webpack-plugin');
 // const TerserPlugin = require('terser-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         // filename: 'main.js',
-        filename: '[name].[contenthash].js'
+        filename: 'assets/js/[name].[contenthash].js',
         // assetModuleFilename: 'assets/images/[hash][ext]'
+        clean: true
     },
     resolve: {
         extensions: ['.js'],
@@ -77,7 +79,7 @@ module.exports = {
             filename: './index.html'
         }),
         new MiniCssExtractPlugin({
-            filename: 'assets/[name].[contenthash].css'
+            filename: 'assets/style/[name].[contenthash].css'
         }),
         // new CopyPlugin({
         //     patterns: [
@@ -88,6 +90,8 @@ module.exports = {
         //     ]
         // })
         new Dotenv(),
+        // Webpack4
+        // new CleanWebpackPlugin()
     ],
     optimization : {
         minimize: true,
